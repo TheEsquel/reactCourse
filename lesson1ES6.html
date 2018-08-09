@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson1</title>
+    <script src="./lib/jquery-3.3.1.min.js"></script>
+    <script>
+
+        $(function(){
+        $('.current-time').each(function(){
+            setInterval(() => $(this).text(Date.now), 500)
+        })
+        })
+
+        class Task {
+
+            constructor()
+            {
+                console.log('Task message!')
+            }
+        }
+        let task1 = new Task
+        console.log(typeof Task) 
+
+    </script>
+</head>
+<body>
+    <p class="current-time"></p>
+</body>
+</html>
