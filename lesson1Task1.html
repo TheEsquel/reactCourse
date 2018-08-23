@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson1</title>
+    <script src="./lib/jquery-3.3.1.min.js"></script>
+    <script>
+        //  callback функция
+        let x = 1;
+        let sum = () => {
+            console.log(x++);
+        }
+        let  loop = (times, callback) => {
+            //  проверяем что в callback действительно передана фнкция 
+            if(callback && typeof (callback) === `function`){
+                for (let i = 0; i < times ; i++){
+                    callback();
+                }
+            }else{
+                return false;
+            }
+        }
+        loop(5, sum);
+
+
+
+
+    </script>
+</head>
+<body>
+    <p class="current-time"></p>
+</body>
+</html>
