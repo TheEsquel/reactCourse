@@ -12,23 +12,29 @@
             let parameters = {
                 figureName : '',
                 area : 0,
-                properties: {
-                    a = parseInt(values.a) ,
-                    b = parseInt(values.b),
-                    h = parseInt(values.h)
+                input: {
+                    a : values.a,
+                    b : values.b,
+                    h : values.h
                 }
-            },
+            }
 
-            if((a && !b && !h) || (a && b && !h && a === b)){   // если  только одно значение ИЛИ  первые два значения  одинаковые это квадрат. 
-                parameters.area = a * b;
-                result.innerHTML = `<p>The figure is a square <p> <br>
-                                                                <p>The area is  ${parameters.area}<p> <br> `
+            console.log(values.a * values.b);
+            if((values.a && !values.b && !values.h) || (values.a && values.b && !values.h && values.a === values.b)){   // если  только одно значение ИЛИ  первые два значения  одинаковые это квадрат. 
+                parameters.area = values.a * values.b;
+                parameters.figureName = 'square' ;
             }
-            if(a && b && !h){
-                parameters.area = a * b
-                result.innerHTML = `<p>The figure is a rectangle <p> <br>
-                                                                <p>The area is  ${parameters.area}<p> <br>`
+            if((values.a && values.b && !values.h) && (values.a !== values.b)){
+                parameters.area = values.a * values.b;
+                parameters.figureName = 'rectangle';    
             }
+            if(values.a && values.b && values.h){
+                parameters.figureName = 'trapeze';
+                parameters.area = (values.a + values.b) * values.h * 0.5;
+            }    
+
+            return parameters;  
+
 
         }
 
@@ -40,8 +46,9 @@
                 let h = document.getElementById('h').value;
 
                 let inputValues = {a, b, h};
-                calculateValues(inputValues);
-                // console.log(inputValues);
+                let result = calculateValues(inputValues);
+                document.getElementById('result').innerHTML = ` It's a   ${result.figureName} <br> 
+                                                                Area is   ${result.area}   ` ;
             })
         }
     </script>
